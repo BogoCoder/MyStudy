@@ -6,6 +6,7 @@ public class NumberToWords extends ConsoleProgram
 	
 	public void run()
 	{
+		setSize(500,500);
 		while(true) {
 		int n = readInt("Enter a integer: ");
 		println(numberToWords(n));
