@@ -23,12 +23,20 @@ int main()
 
 	blade(people, m);
 
-
 return 0;
+
 }
 
 void blade(queue<int>& people, int m)
 {
+	int tem_inicial;	
+	for(int i = 1; i < m; i++)
+	{
+		tem_inicial = people.front();
+		people.pop();
+		people.push(tem_inicial);
+	}
+
 	int temp;
 	while(people.size() > 1)
 	{
