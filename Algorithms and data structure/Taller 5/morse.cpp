@@ -27,26 +27,31 @@ int main(void)
 {
   string input;
   storemap(dictomorse, dictostring); // dictionaries
+ 
 
   printf("Morse code translator\n");
+  while(true)
+  {
+  cout << "> ";
   getline(cin, input);
 
-  if(isalpha(input[0]) || isdigit(input[0])) //identy string
+  if(isalpha(input[0]) || isdigit(input[0])) //identifies string
   {
   	strtom(input, dictomorse);
   }
 
-  else if (input[0] == '.' || input[0] == '-') //identify morse
+  else if (input[0] == '.' || input[0] == '-') //identifies morse
   {
   	mtostr(input, dictostring);
   }
 
-  else cout << "Oops!, wrong input." << endl; //
+  else cout << "Oops!, wrong input." << endl; // something is wrong
 
+  }
   return 0;
 }
 
-void sleep(void) //sleep funct to printing buffer
+void sleep(void) //sleep funct to print buffer
 {
   for (int i = 0; i < 5e7; i++) {}
 }
@@ -70,7 +75,7 @@ void storemap(map<char, string>& dicI, map<string, char>& dicII) // reads the tx
   }
 }
 
-void strtom(string input, map<char, string>& dic) //convert str to morse
+void strtom(string input, map<char, string>& dic) //converts str to morse
 {
   string newinp = "";
   for(int i = 0; i <= input.length(); ++i)
@@ -90,7 +95,7 @@ void strtom(string input, map<char, string>& dic) //convert str to morse
   cout << endl;
 }
 
-void mtostr(string input, map<string, char>& dic) //convert morse to str
+void mtostr(string input, map<string, char>& dic) //converts morse to str
 {
   string newinp = "";
   for(int i = 0; i <= input.length(); ++i)
@@ -108,7 +113,7 @@ void mtostr(string input, map<string, char>& dic) //convert morse to str
   cout << endl;
 }
 
-void printdics(map<char, string>& dictomorse , map<string, char>& dictostring) //print the maps
+void printdics(map<char, string>& dictomorse , map<string, char>& dictostring) //prints the maps
 {
 	std::cout << "mymap contains:\n";
   for (itone=dictomorse.begin(); itone!=dictomorse.end(); ++itone)
