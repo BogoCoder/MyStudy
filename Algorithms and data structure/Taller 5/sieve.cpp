@@ -11,7 +11,6 @@ void printnonprimes(map<int, bool> list);
 
 int main()
 {
-	map<int, bool>::iterator it;
 	map<int, bool> list;
 	int input;
 
@@ -41,7 +40,7 @@ void sieve(int input, map<int, bool>& list)
 		{
 			if(list[j] == true)
 			{
-				for(int k = pow(j, 2); k <= input; k = j + k)
+				for(int k = pow(j, 2); k <= input; k+=j)
 				{
 					list[k] = false;
 				}
