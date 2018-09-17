@@ -15,7 +15,6 @@ int main()
 
 void print_num(int n)
 {
-	map<int, int> lmao;
 	string temp = to_string(n);	
 	int len = temp.length();
 	if (len == 1)
