@@ -9,8 +9,12 @@ class Rational {
 
 public:
 	friend bool operator==(Rational p, Rational q);
+	Rational& operator=(Rational r);
+	Rational& operator+(Rational sum);
+	Rational& operator+=(Rational& s);
 	friend ostream & operator <<(ostream & os, Rational pt);
 	Rational();
+	Rational(int xc);
 	Rational(int xc, int yc);
 
 	int getN();
