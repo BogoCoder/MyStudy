@@ -115,6 +115,38 @@ bool operator!=(Rational p, Rational q)
 	return (p.num * q.den) != (p.den * q.num) ;
 }
 
+Rational Rational::operator++(int)
+{
+	Rational tmp = *this;
+	num += den;
+	return tmp;
+}
+
+Rational Rational::operator++()
+{
+	num += den;
+	return *this;
+}
+
+Rational Rational::operator--(int)
+{
+	Rational tmp = *this;
+	num -= den;
+	return tmp;
+}
+
+Rational Rational::operator--()
+{
+	num -= den;
+	return *this;
+}
+
+Rational Rational::operator-()
+{
+	int tempnum = -num;
+	return Rational(tempnum, den);
+}
+
 ostream & operator<<(ostream & os, Rational pt)
 {
 	return os << pt.num << "/" << pt.den;
@@ -130,10 +162,25 @@ istream & operator>>(istream & is, Rational& pt)
 	return is;
 }
 
+int Rational::sim(int num, int den)
+{
+	long mcd, tmp, rest;
+	mcd = abs(num);
+	tmp = den;
+	while(tmp > 0)
+	{
+		rest = mcd % tmp;
+		mcd = tmp;
+		tmp = rest;
+	}
+
+	return mcd;
+}
+
 Rational::Rational()
 {
 	num = 0;
-	den = 1;
+	den = 1; 
 }
 
 Rational::Rational(int xc)
@@ -144,8 +191,8 @@ Rational::Rational(int xc)
 
 Rational::Rational(int xc, int yc)
 {
-	num = xc;
-	den = yc;
+	num = xc / sim(xc, yc);
+	den = yc / sim(xc, yc);
 }
 
 int Rational::getN() {return num;}

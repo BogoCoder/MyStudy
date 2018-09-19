@@ -6,8 +6,8 @@ using namespace std;
 void swap(int *px, int* py);
 int main()
 {
-	Rational ratI(1, 1);
-	Rational ratII(5,3);
+	Rational ratI(142);
+	Rational ratII(242,16);
 	Rational ratIII;
 
 	cout << "I: " << ratI << endl;
@@ -32,10 +32,17 @@ int main()
 
 	ratIII = Rational(1, 2) * Rational(3, 2) / Rational(4, 2);
 
-	cout << "III = 1/2 x 3/2 / 1 =  " << ratIII << endl;*/
+	cout << "III = 1/2 x 3/2 / 1 =  " << ratIII << endl;**/
 
 	cin >> ratIII;
 	cout << (ratIII) << endl;
+
+	cout << ratIII++ << endl;
+	cout << ++ratIII << endl;
+	cout << ratIII-- << endl;
+	cout << --ratIII << endl;
+	cout << -ratIII << endl;
+	cout << ratIII - Rational(18, 6) << endl;
 
 
 }
