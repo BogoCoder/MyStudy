@@ -8,11 +8,23 @@ using namespace std;
 class Rational {
 
 public:
+	Rational& operator=(Rational e);
+	Rational operator+(Rational sum);
+	Rational operator-(Rational sus);
+	friend Rational operator*(Rational proI, Rational proII);
+	friend Rational operator/(Rational divI, Rational divII);
+	Rational operator+=(Rational sume);
+	Rational operator-=(Rational suse);
+	friend Rational operator*=(Rational proeI, Rational proeII);
+	friend Rational operator/=(Rational diveI, Rational diveII);
 	friend bool operator==(Rational p, Rational q);
-	Rational& operator=(Rational r);
-	Rational& operator+(Rational sum);
-	Rational& operator+=(Rational& s);
+	friend bool operator>(Rational p, Rational q);
+	friend bool operator<(Rational p, Rational q);
+	friend bool operator>=(Rational p, Rational q);
+	friend bool operator<=(Rational p, Rational q);
+	friend bool operator!=(Rational p, Rational q);
 	friend ostream & operator <<(ostream & os, Rational pt);
+	friend istream & operator >>(istream & is, Rational& pt);
 	Rational();
 	Rational(int xc);
 	Rational(int xc, int yc);

@@ -1,26 +1,20 @@
 #include "rat.hpp"
 #include <iostream>
 
-bool operator==(Rational p, Rational q)
+Rational& Rational::operator=(Rational e)
 {
-	return p.num == q.num && p.den == q.den;
-}
-
-Rational& Rational::operator=(Rational r)
-{
-	this->setN(r.num);
-	this->setD(r.den);
+	this->num = e.num;
+	this->den = e.den;
 
 	return *this;
 }
 
-Rational& Rational::operator+(Rational sum)
+Rational Rational::operator+(Rational sum)
 {
 	int tempnum;
 	int tempden;
 	if(this->den == sum.den)
 	{
-		cout << "true";
 		tempden = this->den;
 		tempnum = this->num + sum.num;
 	}
@@ -31,9 +25,94 @@ Rational& Rational::operator+(Rational sum)
 		tempnum = (this->num * sum.den) + (this->den * sum.num);
 	}
 	
-	this->setN(tempnum);
-	this->setD(tempden);
+	return Rational(tempnum, tempden);
+}
+
+Rational Rational::operator-(Rational sus)
+{
+	int tempnum;
+	int tempden;
+
+	if(den == sus.den)
+	{
+		tempden = den;
+		tempnum = num - sus.num;
+	}
+
+	else
+	{
+		tempden = den * sus.den;
+		tempnum = (num * sus.den) - (den * sus.num);
+	}
+	
+	return Rational(tempnum, tempden);
+}
+
+Rational operator*(Rational proI, Rational proII)
+{
+	return Rational(proI.num * proII.num, proI.den * proII.den);
+}
+
+Rational operator/(Rational divI, Rational divII)
+{
+	int tempnum = divI.num * divII.den;
+	int tempden = divI.den * divII.num;
+
+	return Rational(tempnum, tempden);
+}
+
+Rational Rational::operator+=(Rational sume)
+{
+	*this = *this + sume;
 	return *this;
+}
+
+Rational Rational::operator-=(Rational suse)
+{
+	*this = *this - suse;
+	return *this;
+}
+
+Rational operator*=(Rational proeI, Rational proeII)
+{
+	proeI = proeI * proeII;
+	return proeI;
+}
+
+Rational operator/=(Rational diveI, Rational diveII)
+{
+	diveI = diveI / diveII;
+	return diveI;
+}
+
+bool operator==(Rational p, Rational q)
+{
+	return (p.num * q.den) == (p.den * q.num);
+}
+
+bool operator>(Rational p, Rational q)
+{
+	return (p.num * q.den) > (p.den * q.num);
+}
+
+bool operator<(Rational p, Rational q)
+{
+	return (p.num * q.den) < (p.den * q.num);
+}
+
+bool operator>=(Rational p, Rational q)
+{
+	return (p.num * q.den) > (p.den * q.num) || (p.num * q.den) == (p.den * q.num);
+}
+
+bool operator<=(Rational p, Rational q)
+{
+	return (p.num * q.den) < (p.den * q.num) || (p.num * q.den) == (p.den * q.num) ;
+}
+
+bool operator!=(Rational p, Rational q)
+{
+	return (p.num * q.den) != (p.den * q.num) ;
 }
 
 ostream & operator<<(ostream & os, Rational pt)
@@ -41,10 +120,20 @@ ostream & operator<<(ostream & os, Rational pt)
 	return os << pt.num << "/" << pt.den;
 }
 
+istream & operator>>(istream & is, Rational& pt)
+{
+	int I;
+	int II;
+	is >> I >> II;
+	pt.num = I;
+	pt.den = II;
+	return is;
+}
+
 Rational::Rational()
 {
 	num = 0;
-	den = 0;
+	den = 1;
 }
 
 Rational::Rational(int xc)
