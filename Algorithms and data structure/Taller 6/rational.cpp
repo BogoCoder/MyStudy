@@ -7,7 +7,7 @@ void swap(int *px, int* py);
 int main()
 {
 	Rational ratI(142);
-	Rational ratII(242,16);
+	Rational ratII(464632131,131313213);
 	Rational ratIII;
 
 	cout << "I: " << ratI << endl;

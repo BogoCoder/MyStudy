@@ -149,7 +149,10 @@ Rational Rational::operator-()
 
 ostream & operator<<(ostream & os, Rational pt)
 {
-	return os << pt.num << "/" << pt.den;
+	if(pt.den == 1) return os << pt.num;
+
+	else return os << pt.num << "/" << pt.den;
+	
 }
 
 istream & operator>>(istream & is, Rational& pt)

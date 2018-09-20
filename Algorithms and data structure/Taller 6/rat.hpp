@@ -49,4 +49,4 @@ private:
 	int num,den;
 };
 
-#endif //_point_h_
+#endif //_rat_h_
