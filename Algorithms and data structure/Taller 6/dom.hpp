@@ -27,6 +27,10 @@ public:
 	int getA();
 	int getB();
 
+	void flipped();
+
+	friend int ord(Domino p);
+
 	void setA(int v);
 	void setB(int v);
 

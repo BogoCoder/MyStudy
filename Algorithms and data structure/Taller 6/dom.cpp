@@ -8,21 +8,21 @@ ostream & operator<<(ostream & os, Domino toc)
 
 bool operator==(Domino p, Domino q)
 {
-	return (p.endA == q.endA) && (p.endB == q.endB);
+	return (p.endA == q.endA || p.endA == q.endB) && (p.endB == q.endB || p.endB == q.endA);
 }
 
 bool operator!=(Domino p, Domino q)
 {
-	return (p.endA != q.endA) || (p.endB != q.endB);
+	return (p.endA != q.endA && p.endA != q.endB) || (p.endB != q.endB && p.endB != q.endA);
 }
 
 bool operator<(Domino p, Domino q)
 {
-	if(p.endA < q.endA) return true;
-	else if(p.endA == q.endA)
+	if(p != q)
 	{
-		return p.endB < q.endB;
+		return ord(p) < ord(q);
 	}
+
 	else
 	{
 		return false;
@@ -36,11 +36,11 @@ bool operator<=(Domino p, Domino q)
 
 bool operator>(Domino p, Domino q)
 {
-	if(p.endA > q.endA) return true;
-	else if(p.endA == q.endA)
+	if(p != q)
 	{
-		return p.endB > q.endB;
+		return ord(p) > ord(q);
 	}
+
 	else
 	{
 		return false;
@@ -51,6 +51,19 @@ bool operator>=(Domino p, Domino q)
 {
 	return (p > q) || (p == q);
 }
+
+int Domino::getA() {return endA;}
+int Domino::getB() {return endB;}
+
+void Domino::flipped()
+{
+	int tmp = endA;
+	endA = endB;
+	endB = tmp;
+}
+
+void Domino::setA(int v) {endA = v;}
+void Domino::setB(int v) {endB = v;}
 
 Domino::Domino()
 {
@@ -68,6 +81,11 @@ Domino::Domino(int ac, int ay)
 {
 	endA = ac;
 	endB = ay;
+}
+
+int ord(Domino p)
+{
+	return (p.endA * 20) + p.endB;
 }
 
 string to_string(Domino p)
