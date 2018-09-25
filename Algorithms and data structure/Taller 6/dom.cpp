@@ -8,12 +8,27 @@ ostream & operator<<(ostream & os, Domino toc)
 
 bool operator==(Domino p, Domino q)
 {
-	return (p.endA == q.endA || p.endA == q.endB) && (p.endB == q.endB || p.endB == q.endA);
+	if(p.endA == q.endA)
+	{
+		return p.endB == q.endB;
+	}
+
+	else if (p.endA == q.endB)
+	{
+		return p.endB == q.endA;
+	}
+	
+	else return false;
 }
 
 bool operator!=(Domino p, Domino q)
 {
-	return (p.endA != q.endA && p.endA != q.endB) || (p.endB != q.endB && p.endB != q.endA);
+	if(p == q)
+	{
+		return false;
+	}
+	else return true;
+	//return (p.endA != q.endA && p.endA != q.endB) || (p.endB != q.endB && p.endB != q.endA);
 }
 
 bool operator<(Domino p, Domino q)

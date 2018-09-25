@@ -13,7 +13,7 @@ public:
 	friend ostream & operator<<(ostream & os, Domino toc);
 	friend bool operator==(Domino p, Domino q);
 	friend bool operator!=(Domino p, Domino q);
-	friend bool operator<(Domino p, Domino q);
+	friend bool operator<(const Domino p, const Domino q);
 	friend bool operator<=(Domino p, Domino q);
 	friend bool operator>(Domino p, Domino q);
 	friend bool operator>=(Domino p, Domino q);
