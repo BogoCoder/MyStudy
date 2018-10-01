@@ -28,20 +28,11 @@ bool operator!=(Domino p, Domino q)
 		return false;
 	}
 	else return true;
-	//return (p.endA != q.endA && p.endA != q.endB) || (p.endB != q.endB && p.endB != q.endA);
 }
 
 bool operator<(Domino p, Domino q)
 {
-	if(p != q)
-	{
-		return ord(p) < ord(q);
-	}
-
-	else
-	{
-		return false;
-	}
+	return ord(p) < ord(q);	
 }
 
 bool operator<=(Domino p, Domino q)
@@ -51,15 +42,7 @@ bool operator<=(Domino p, Domino q)
 
 bool operator>(Domino p, Domino q)
 {
-	if(p != q)
-	{
-		return ord(p) > ord(q);
-	}
-
-	else
-	{
-		return false;
-	}
+	return ord(p) > ord(q);
 }
 
 bool operator>=(Domino p, Domino q)
@@ -100,7 +83,7 @@ Domino::Domino(int ac, int ay)
 
 int ord(Domino p)
 {
-	return (p.endA * 20) + p.endB;
+	return ((std::min(p.endA, p.endB) * 6) + std::max(p.endA, p.endB)) ;
 }
 
 string to_string(Domino p)

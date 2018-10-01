@@ -39,4 +39,4 @@ private:
 	int endA,endB;
 };
 
-#endif //_point_h_
+#endif //_dom_h_
