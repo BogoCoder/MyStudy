@@ -3,27 +3,27 @@ using namespace std;
 
 int const DIM = 10;
 int* createIndexArray(int k);
+void destroy(int *p);
 
 int main()
 {
-	createIndexArray(10);
+	int *ptr = createIndexArray(DIM);
+	for(int i= 0; i < DIM; ++i) cout << ptr[i] << endl;
+	destroy(ptr);
 	return 0;
 }
 
-template <typename dataType>
-struct Cell 
-{
-	dataType content;
-	Cell *link;
-};
-
 int* createIndexArray(int k)
 {
-	int arrint[k];
-	int * finx = arrint;
+	int * arrint = new int[k];
 	for(int o = 0; o < k; ++o) 
 		{
 			arrint[o] = o;
 		}
-	return finx;
+	return arrint;
+}
+
+void destroy(int * p)
+{
+	delete[] p;
 }
