@@ -1,18 +1,33 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
-int const DIM = 10;
+vector<int> takeodds(vector <int> vec);
+
 int main()
 {
-	 int x = 5;
-	const int * ptr = &x;
+	std::vector<int> vi = {0,1,2,3,4,5,6,7,8,9};
 
-	const int y = 6;
+	vector<int> odds = takeodds(vi);
 
-	int *ptr1 = const_cast<int*>(ptr); //returns ptr content with no constness
-	//ptr = &y;
+	for(auto ito = odds.begin(); ito != odds.end(); ++ito)
+	{
+		cout << *ito<< endl;
+	}
 
-	//x = 6;
+	return 0;
+}
 
-	cout << *ptr1 << endl;
+vector<int> takeodds(vector <int> vec)
+{
+	vector<int> odds;
+	for(auto it = vec.begin(); it != vec.end(); ++it)
+	{
+		if(*it % 2 != 0)
+		{
+			odds.push_back(*it);
+		}
+	}
+
+	return odds;
 }
