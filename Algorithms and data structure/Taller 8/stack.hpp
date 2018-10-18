@@ -20,17 +20,23 @@ private:
 
 	void deepCopy(const Stack<dataType> & src);
 
+	Stack(const Stack & value) { }
+	const Stack & operator=(const Stack & rhs)
+	{
+		return *this;
+	}
+
 public:
 	Stack();
 	~Stack ();
 	size_t size();
 	bool empty();
 	void clear();
-	//void push(dataType & ch);
+	void push(dataType elem);
 	dataType pop();
 	dataType top();
 };
 
-#include "s.cpp"
+#include "stack.cpp"
 
 #endif
