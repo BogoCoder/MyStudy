@@ -7,14 +7,11 @@ using namespace std;
 
 //sin terminar
 set<string> genStrings(set<char> chars, int k);
-set<string> putCharInGrooves(set<string> tmp, char ch);
+set<string> genStrings_helper(set<char> chars, int k, string choose);
 int main()
 {
 	int input;
 	set<char> chars = {'a', 'b'};
-	auto iter = prev(chars.end());
-
-	cout << *iter << endl;
 
 	cout << "Enter a int: ";
 	cin >> input;
@@ -33,51 +30,35 @@ int main()
 
 set<string> genStrings(set<char> chars, int k)
 {
-	set<char> chartemp = chars;
-	settovec(chars, k);
-	auto it = chartemp.begin();
-	if(!chartemp.empty()) it = prev(chartemp.end());
-
-	cout << "ptr: " << *it  << endl;
-
-	set<string> final;
-	if(chartemp.size() == 0)
-	{
-		cout << "end" << endl;
-		final.insert("");
-		return final;
-	}
-	else
-	{
-		cout << "good!" << endl;
-		char first = *it;
-		chartemp.erase(it);
-		set<string> s_tmp = genStrings(chartemp, k-1);
-		final = putCharInGrooves(s_tmp, first);
-		return final;
-	}
+	return genStrings_helper(chars, k , ""); 
 }
 
-set<string> putCharInGrooves(set<string> tmp, char ch)
+set<string> genStrings_helper(set<char> chars, int k, string choose)
 {
-	set<string> toret;
+	set<string> ret;
+	set<string> chartemp;
 
-	string tmchar = "";
-	tmchar += ch;
-	string str;
-	string temp;
-
-	for (auto it=tmp.begin(); it!=tmp.end(); ++it)
+	if(k == 1)
+	{
+		for (auto iter = chars.begin(); iter != chars.end(); ++iter) 
 		{
-			str = *it;
-			for(unsigned int i = 0; i <= str.size(); ++i)
-			{
-				temp = str;
-
-				temp.insert(i, tmchar);
-				toret.insert(temp);
-			}
-
+			string temp = choose;
+			temp.push_back(*iter);
+			ret.insert(temp);
 		}
-	return toret;
+	}
+	else if(k > 1)
+	{
+		for (auto iter = chars.begin(); iter != chars.end(); ++iter) 
+		{
+			string temp = choose;
+			temp.push_back(*iter);
+			chartemp = genStrings_helper(chars,k-1, temp);
+			for (auto i = chartemp.begin(); i != chartemp.end(); ++i) 
+			{
+				ret.insert(*i);
+			}
+		}
+	}
+	return ret;
 }
