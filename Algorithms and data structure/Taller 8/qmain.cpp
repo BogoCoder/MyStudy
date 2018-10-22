@@ -16,7 +16,7 @@ int main()
 			cout << myQueue.pop() << endl;
 		}
 
-	for(int i = 0; i <= 50; ++i) 
+	for(int i = 0; i < 10; ++i) 
 		{
 			myQueue.push(i);
 		}
@@ -27,8 +27,6 @@ int main()
 		{
 			cout << myQueue.pop() << endl;
 		}
-
-
 
 	return 0;
 }
