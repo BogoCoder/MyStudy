@@ -61,4 +61,6 @@ typename BST<keyType>::BSTNode * BST<keyType>::succ(BSTNode * root) const
 		}
 	}
 }
+
+
 #endif //_BST_cpp_

@@ -24,12 +24,25 @@ private:
 	BSTNode * succ(BSTNode * root) const;
 	BSTNode * pred(BSTNode * root) const;
 
+	void remove(BSTNode * &root, keyType key);
+	BSTNode * copy(BSTNode *root) const;
+	void clear(BSTNode * &root);
+	void display(BSTNode *root, std::ostream &out) const;
+	void insert(BSTNode * &root, keyType key);
+	BSTNode * find(BSTNode * root, keyType key) const;
+
+
 public:
 
 	BST();
 	BST(const BST &rhs);
 	~BST();
-
+	void remove(keyType key);
+	bool empty(void) const;
+	void clear(void);
+	bool find(keyType key) const;
+	void insert(keyType key);
+	void display(std::ostream &out = std::cout) const;
 };
 
 #include "BST.cpp"
