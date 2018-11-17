@@ -40,6 +40,7 @@ public:
 	void remove(keyType key);
 	bool empty(void) const;
 	void clear(void);
+	size_t size(void) const;
 	bool find(keyType key) const;
 	void insert(keyType key);
 	void display(std::ostream &out = std::cout) const;
