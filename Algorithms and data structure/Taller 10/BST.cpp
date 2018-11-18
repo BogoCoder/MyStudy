@@ -2,6 +2,7 @@
 #define _BST_cpp_
 
 #include "BST.hpp"
+
 template<typename keyType>
 typename BST<keyType>::BSTNode * BST<keyType>::min(BSTNode * root) const
 {

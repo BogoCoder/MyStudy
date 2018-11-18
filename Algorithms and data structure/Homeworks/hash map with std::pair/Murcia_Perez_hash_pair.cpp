@@ -2,7 +2,7 @@
 #define _HashPair_cpp_
 
 #include <list>
-#include "hash_pair.hpp"
+#include "Murcia_Perez_hash_pair.hpp"
 
 template<typename dataType>
 std::size_t hashFunction<dataType>::operator()(const dataType & key) {
