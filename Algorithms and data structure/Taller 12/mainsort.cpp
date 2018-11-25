@@ -16,31 +16,25 @@ int main() {
     std::uniform_int_distribution<int> distribution(min, max);
     
     // declare and initialize heap of shorts
-    std::vector<int> vec;
+    std::vector<int> vec1;
+    std::vector<int> vec2;
     
     // fill heap
     for (int i = min; i <= max; i++) {
         int number = distribution(generator);
-        vec.push_back(number);
+        vec1.push_back(number);
+        vec2.push_back(number);
         //std::cout << "Inserted " << number << std::endl;
     }
 
     t = clock();
-    heapsort(vec);
+    heapsort(vec1);
     t = clock() - t;
 
     cout << "HEAPSORT: It took me " << (int)t << " clicks (" << (((float)t)/CLOCKS_PER_SEC) << " seconds)." << endl;
 
-    vec.clear();
-
-    for (int i = min; i <= max; i++) {
-        int number = distribution(generator);
-        vec.push_back(number);
-        //std::cout << "Inserted " << number << std::endl;
-    }
-
     t = clock();
-    mergesort(vec);
+    mergesort(vec2);
     t = clock() - t;
 
     cout << "MERGESORT: It took me " << (int)t << " clicks (" << (((float)t)/CLOCKS_PER_SEC) << " seconds)." << endl;
@@ -56,7 +50,5 @@ int main() {
         }
     }
     cout << ']' << endl;*/
-    return 0;
-    
     return 0;
 }
